@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+
+}
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+body {
+  background-color: #15202B;
+  color: #FBF7F7;
+  font-family: "Helvetica Neue";
+  width: 90vw;
+  margin: auto auto;
+  text-align: center;
+  height: 10vh;
+  
+}
+.user-avi {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+.TwitterLogin {
+  background-color: #1DA1F2;
+  color: white;
+  font-size: large;
+  border-radius: 25px;
+  text-align: center;
+  padding: 20px;
+  border: none;
+}
+.search-btn{
+  color: white;
+  background-color: #1DA1F2;
+  text-decoration: none;
+  border-radius: 25px;
+  border: none;
+  padding: 20px;
+  font-size: large;
+}
+#link{
+  color:white;
+}
+div{
+  padding: 10px 0;
+}
+.text-bar {
+  border: none;
+  width: 85%;
+  background-color: transparent;
+  border-bottom: 2px solid #1DA1F2 ;
+  color: white;
+  height: 5vh;
+  font-size: 2.5vh;
+  float: left;
+}
+.text-bar-label{
+  text-align: center;
+  float: left;
+}
+
+.text-bar:focus{
+  outline: none;
+}
+* {
+  box-sizing: border-box;
+}
+.search-icon{
+  float: left;
+  height: 5vh;
+  border-bottom: 2px solid #1DA1F2 ;
+  
+
+}
+.svg-inline--fa.fa-w-16 {
+  width: 5%;
+}
+.add-btn{
+  color: white;
+  background-color: #1DA1F2;
+  text-decoration: none;
+  border: none;
+  float: left;
+  width: 100%;
+  border-radius: 25px;
+  padding: 5%;
+  font-size: 70%;
+
+}
+.add-btn-div{
+  width: 10%;
+  border-bottom: 2px solid #1DA1F2;
+  float: left;
+  height: 5vh;
+  margin: 0 auto;
+  padding: auto;
+}
