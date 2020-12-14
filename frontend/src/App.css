@@ -15,11 +15,11 @@ body {
   background-color: #15202B;
   color: #FBF7F7;
   font-family: "Helvetica Neue";
-  width: 90vw;
+  width: 100%;
   margin: auto auto;
   text-align: center;
   height: 10vh;
-  
+  font-size: 100%;
 }
 .user-avi {
   width: 100px;
@@ -82,10 +82,7 @@ div{
   width: 5%;
 }
 .add-btn{
-  color: white;
-  background-color: #1DA1F2;
-  text-decoration: none;
-  border: none;
+  
   float: left;
   width: 100%;
   border-radius: 25px;
@@ -100,4 +97,35 @@ div{
   height: 5vh;
   margin: 0 auto;
   padding: auto;
+}
+.tweet{
+  border: 1px solid white;
+  padding: 10px;
+}
+.nav {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 0;
+}
+
+.in-out-btn {
+text-align: right;
+margin: auto 0;
+}
+.btn {
+  color: white;
+  background-color: #1DA1F2;
+  text-decoration: none;
+  border: none;
+}
+
+.title-name {
+  text-align: left;
+  margin: auto 0;
+}
+.search-btn{
+  margin: 10px;
+}
+.search-div{
+  margin-top: 10px;
 }
