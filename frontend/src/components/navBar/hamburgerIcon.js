@@ -1,5 +1,6 @@
 import React from 'react'
-export default function HamburgerIcon() {
+export default function HamburgerIcon({color}) {
+    
     return (
         <svg
             width="40px"
@@ -10,11 +11,11 @@ export default function HamburgerIcon() {
             xlink="http://www.w3.org/1999/xlink"
         >
             <title>E79CA30B-4E0E-4FEF-B557-7F6BA28B5687</title>
-            <g id="Page-2" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <g id="Page-2" stroke="none" strokeWidth="1" fill={color} fillRule="evenodd">
                 <g
                     id="Mobile---List-View"
                     transform="translate(-26.000000, -119.000000)"
-                    fill="#1DA1F2"
+                    fill={color}
                 >
                     <g id="Group-6" transform="translate(0.000000, 94.000000)">
                         <g id="Mobile-Header" transform="translate(26.000000, 14.000000)">

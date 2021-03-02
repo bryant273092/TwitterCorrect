@@ -30,10 +30,11 @@ body {
   background-color: #1DA1F2;
   color: white;
   font-size: large;
-  border-radius: 25px;
+  border-radius: 5px;
   text-align: center;
-  padding: 20px;
+  padding: 15px 40px;
   border: none;
+  white-space: nowrap;
 }
 .search-btn{
   color: white;
@@ -46,9 +47,6 @@ body {
 }
 #link{
   color:white;
-}
-div{
-  padding: 10px 0;
 }
 .text-bar {
   border: none;

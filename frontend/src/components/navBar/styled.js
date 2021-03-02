@@ -1,52 +1,58 @@
 import styled from 'styled-components';
 
-import { FlexColumn, FlexRow } from '../../components/layout'
+import { FlexColumn, FlexRow, primary, secondary } from '../layout'
 
 export const NavBarContainer = styled(FlexRow)`
     width: 100%;
-    height: 50px;
-    padding: 25px 25px;
+    height: 60px;
+    padding: 0px 5%;
     align-items: center;
-    background-color: #15202B;
+    background-color: ${props => props.bg};
     position: sticky;
     top: 0;
     justify-content: space-between;
-    border-bottom: 1px solid gray;
+    box-shadow: ${props => props.scrolled ? "0px 0px 5px 0px black" : 'none'};
+
 `;
 export const NavBarLogo = styled(FlexRow)`
     overflow: hidden;
-    margin-left: 20px;
+    width: 30%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 `;
 export const NavBarItems = styled(FlexRow)`
-    width: 65%;
+    width: 30%;
     justify-content: space-between;
     align-self: center;
     @media (max-width: 1024px) {
         display: none;
     } ;
+    
 `;
 export const NavBarItem = styled(FlexRow)`
     width: 100%;
     flex-direction: column;
 `;
 export const NavBarButton = styled.a`
-    color: white;
+    color: ${props => props.color || 'white'};
     font-size: 17px;
-    text-align: center;
     text-decoration: none;
     margin: auto;
     border-bottom: 2px solid transparent;
     ${NavBarItem}:hover & {
-        border-bottom: 2px solid gray;
+        border-bottom: 2px solid white;
+        font-size: 22px;
     } ;
 `;
 
-export const HamburgerIconDiv = styled(NavBarButton)`
-    margin: 0px;
-    align-self: center;
+export const HamburgerIconDiv = styled(FlexColumn)`
+    width: 30%;
+    height: 50%;
     @media (min-width: 1025px) {
         display: none;
     } ;
+    
 `;
 export const DropDownItems = styled(FlexColumn)`
     display: none;
@@ -60,22 +66,30 @@ export const DropDownItems = styled(FlexColumn)`
     }
 `;
 export const DropDownItem = styled(NavBarButton)`
-    color: white;
-    padding: 10px;
-    border-bottom: 1px solid gray !important;
-    margin: auto 0px;
+    color: ${secondary};
+    padding: 15px;
+    font-size: 1.2rem;
+    width: 100%;
 `;
 export const MobileListContainer = styled(FlexColumn)`
-    background-color: #15202B;
+    background-color: ${primary};
     flex-direction: column;
     position: absolute;
-    border-top: 1px solid gray;
-    top: 50px;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    display: ${(props) => props.display || 'none'};
-    @media (min-width: 1025px) {
+    top: 80px;
+    left: 3%;
+    right: 3%;
+    width: auto;
+    max-width: 500px;
+    height: auto;
+    min-height: 50%;
+    border-radius: 1rem;
+    display: ${props => props.isdisplay ? 'flex' : 'none'};
+    @media (min-width: 1024px) {
         display: none;
-    } ;
-`;
+    };
+`
+
+export const LogoutSection = styled(FlexColumn)`
+    width: 30%;
+    height: 50%;
+`

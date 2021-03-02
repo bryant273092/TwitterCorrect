@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import TwitterLogin from 'react-twitter-auth';
 import Home from './home';
 import Tweets from './tweets';
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import NavBar from './components/navBar';
+import { Container, FlexColumn, Button, SectionHeading, Image } from './components/layout'
+import { ManagedUIContext, SessionContext } from './components/context'
 
 class App extends Component {
 
@@ -16,6 +18,7 @@ class App extends Component {
       token: this.localStore ? this.localStore.token : '',
       userInfo: this.localStore ? this.localStore.userInfo : ''
     };
+    
   }
 
   onSuccess = (response) => {
@@ -50,10 +53,10 @@ class App extends Component {
     let token = !!this.state.isAuthenticated ? (this.state.token) : ""
     return token;
   }
-  getTwitterLogin = () => {
+  getTwitterLogin = (text) => {
     let form = <TwitterLogin className="TwitterLogin" loginUrl="http://localhost:4000/api/v1/auth/twitter"
       onFailure={this.onFailed} onSuccess={this.onSuccess}
-      requestTokenUrl="http://localhost:4000/api/v1/auth/twitter/reverse"> Sign in with Twitter</TwitterLogin>;
+      requestTokenUrl="http://localhost:4000/api/v1/auth/twitter/reverse"> {text}</TwitterLogin>;
     return form;
   }
   fetchUserInfo() {
@@ -63,7 +66,7 @@ class App extends Component {
         localStorage.setItem('userInfo', response.body);
         console.log('user data has been fetched')
       }))
-    
+
   }
   getUserInfo = () => {
     return this.state.userInfo
@@ -74,58 +77,42 @@ class App extends Component {
     this.props.history.push('/')
   }
 
-
+  
   render() {
-    if (!this.state.isAuthenticated) {
-      return (
-        <div className="app">
-          <div className="nav">
-            <div className="title-name">
-              <h1>
-                Twitter Correct
-              </h1>
-            </div>
-            <div className="in-out-btn">
-              <button className="btn">{this.state.isAuthenticated ? 'Log Out' : 'Sign In'}</button>
-            </div>
+    return (
+      this.state.isAuthenticated ?
+        <ManagedUIContext>
+          <div className="App">
+            <Router>
+              <NavBar history={this.props.histroy} logout={this.userLogout} state={this.state.isAuthenticated} />
+              <Switch>
+                <Route exact path="/">
+                  <Home history={this.props.histroy} body={this.getUserAuthentication()} userInfo={this.state.userInfo} />
+                </Route>
+                <Route exact path="/tweets">
+                  <Tweets token={this.getToken()} body={this.getUserAuthentication()} userInfo={this.state.userInfo} />
+                </Route>
+              </Switch>
+            </Router>
           </div>
+        </ManagedUIContext>
+        :
+        <Container height={'100vh'} image={'url(/bg-image.webp)'}>
+          <FlexColumn margin={'0 0 0 auto'} width={'10rem'}>
+            {this.getTwitterLogin("Sign in")}
+          </FlexColumn>
+          <FlexColumn margin={'50% auto'} aligned={'center'} jc={'center'}>
 
-          <div className="AppSummary">
-            <p>
-              Worried about potential employers or cancel culture finding your old tweets? Correct your
-              Twitter Account with TwitterCorrect by allowing it to search all your old tweets
-              against a blacklist of damaging words.
-            </p>
-          </div>
-          <div className="twitterLogin">
-            {this.getTwitterLogin()}
-          </div>
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="App">
-
-          <Router>
-            <NavBar history={this.props.histroy} logout={this.userLogout} state={this.state.isAuthenticated} />
-            <Switch>
-
-              <Route exact path="/">
-                <Home history={this.props.histroy} body={this.getUserAuthentication()} userInfo={this.state.userInfo} />
-              </Route>
-              <Route exact path="/tweets">
-                <Tweets token={this.getToken()} body={this.getUserAuthentication()} userInfo={this.state.userInfo} />
-              </Route>
-            </Switch>
-          </Router>
+            <Image width={'80%'} src="/correctify-logo.png"></Image>
+            <SectionHeading>
+              Scan, identify, and delete your tweets all in one place.
+            </SectionHeading>
+            {this.getTwitterLogin("Sign in with Twitter")}
+          </FlexColumn>
 
 
-        </div>
-
-      );
-    }
-
+        </Container>
+    )
   }
 }
 

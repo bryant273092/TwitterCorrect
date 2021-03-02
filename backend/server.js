@@ -166,7 +166,6 @@ app.get('/getuser/:user_id/:token/:secret', (req, res) => {
   request(options, function (error, response) {
     res.send(response)
     if (error) throw new Error(error);
-    console.log(response.body)
   });
 });
 
